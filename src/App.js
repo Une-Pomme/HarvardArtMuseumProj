@@ -1,44 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { Button } from 'reactstrap';
 import axios from 'axios';
-import logo from './logo.svg';
 import './App.css';
+import MuseumInfoCard from './MuseumInfoCard'
 
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = `https://api.harvardartmuseums.org/object?size=1&apikey=${API_KEY}`;
 
 function App() {
+  const [museumObject, setMuseumObject] = useState(null)
 
-  // useEffect(() => {
-  //   axios.get(API_URL)
-  //   .then(res => {
-  //     console.log(res)
-  //   })
-  // }) 
-
-  useEffect(() => {
+  function getRandomMuseumResult() {
     axios.get(API_URL)
     .then(res => {
-      console.log(res.data)
-    });  
-  });
+      setMuseumObject(res.data.records[0]);
+    }); 
+  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Button onClick={getRandomMuseumResult}>Get an Object from the Harvard Art Museum</Button>
+     { museumObject !== null ? <MuseumInfoCard info={museumObject} /> : null }
     </div>
   );
 }
