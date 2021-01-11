@@ -6,7 +6,7 @@ import MuseumInfoCard from './MuseumInfoCard'
 
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const API_URL = `https://api.harvardartmuseums.org/object?size=1&apikey=${API_KEY}`;
+const API_URL = `https://api.harvardartmuseums.org/object?size=1&sort=random&apikey=${API_KEY}`;
 
 function App() {
   const [museumObject, setMuseumObject] = useState(null)
