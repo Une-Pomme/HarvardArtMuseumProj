@@ -14,7 +14,7 @@ const MuseumInfoCard = (props) =>{
     <CardSubtitle tag="h6" className="mb-2 text-muted">Date: {info.dated}</CardSubtitle>
     {info.imagecount > 0 && info.images.length > 0? 
     <CardImg className="museum-object-image" src={info.images[0].baseimageurl} alt={info.images[0].alttext !== null ? info.images[0].alttext : "" }></CardImg>   :
-    <p> [No image is available]</p>
+    <p id="no-image-message"> [No image is available]</p>
 }
     {info.description !== null? 
     <CardText>Object Description: {info.description}</CardText> :

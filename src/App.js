@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import './App.css';
 import MuseumInfoCard from './MuseumInfoCard'
@@ -19,10 +19,20 @@ function App() {
   }
 
   return (
+    <Container>
     <div className="App">
-     <Button onClick={getRandomMuseumResult}>Get an Object from the Harvard Art Museum</Button>
+      <Row>
+        <Col>
+     <Button color="primary" onClick={getRandomMuseumResult}>Get an Object from the Harvard Art Museum</Button>
+     </Col>
+     </Row>
+     <Row>
+       <Col>
      { museumObject !== null ? <MuseumInfoCard info={museumObject} /> : null }
+     </Col>
+     </Row>
     </div>
+    </Container>
   );
 }
 

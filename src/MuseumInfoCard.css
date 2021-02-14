@@ -2,3 +2,8 @@
     max-width: 300px;
     height: auto;
 }
+
+p#no-image-message{
+    color: red;
+    text-transform: uppercase;
+}
